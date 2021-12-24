@@ -1,9 +1,6 @@
 <?php
 require_once "../templates/header.php";
 
-$query = "SELECT * FROM users";
-$users = $pdo->query($query);
-
 $query = "SELECT * FROM cities";
 $cities = $pdo->query($query);
 
