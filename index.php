@@ -68,22 +68,9 @@ foreach ($users as $user){
 echo "</tbody>
      </table>   ";
 ?>
- <form method="POST" action="form.php">
-            <input required class="form-control mb-2" placeholder="Имя" name='name'>
-            <input class="form-control mb-2" placeholder="Логин" name='login'>
-            <input class="form-control mb-2" type="password" placeholder="Пароль" name='password'>
-            <select class="form-control mb-2" name="city_id">
-            <option value='<?= NULL?>' selected disabled>--Город--</option>
-                <?php
-                    foreach ($cities as $city){
-                        echo "<option value ='{$city['id']}'>{$city['name']}</option>";
-                    };
-                ?>
-            </select>
-            <button type="submit" class="btn btn-success w-100">Отправить</button>
-        </form>
+<a href = 'actions\register.php'>
+                Регистрация </a>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
