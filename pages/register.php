@@ -5,7 +5,7 @@ $query = "SELECT * FROM cities";
 $cities = $pdo->query($query);
 
 ?>
- <form method="POST" action="../form.php">
+ <form method="POST" action="../actions/register.php">
             <input required class="form-control mb-2" placeholder="Имя" name='name'>
             <input class="form-control mb-2" placeholder="Логин" name='login'>
             <input class="form-control mb-2" type="password" placeholder="Пароль" name='password'>
