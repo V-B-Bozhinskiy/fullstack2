@@ -4,11 +4,21 @@ require_once "../templates/header.php";
 $query = "SELECT * FROM cities";
 $cities = $pdo->query($query);
 
+if (isset($_SESSION['reg_error'])){
+    echo "
+    <div class='alert alert-danger text-center' role='alert'>
+         {$_SESSION['reg_error']}
+    </div>
+    ";
+    unset($_SESSION['reg_error']);
+}
+
 ?>
  <form method="POST" action="../actions/register.php">
             <input required class="form-control mb-2" placeholder="Имя" name='name'>
             <input class="form-control mb-2" placeholder="Логин" name='login'>
             <input class="form-control mb-2" type="password" placeholder="Пароль" name='password'>
+            <input class="form-control mb-2" type="password" placeholder="Повторите пароль" name='repassword'>
             <select class="form-control mb-2" name="city_id">
             <option value='<?= NULL?>' selected disabled>--Город--</option>
                 <?php

@@ -1,4 +1,6 @@
 <?php
+require_once "../../templates/header.php";
+
 $query = "SELECT * FROM users";
 $users = $pdo->query($query);
 
@@ -33,7 +35,7 @@ foreach ($users as $user){
             </td>
             <td>{$city}</td>
             <td class='text-center'>
-                <form method='post' action='actions/del_user.php'>
+                <form method='post' action='../../actions/del_user.php'>
                     <input hidden name='id' value='{$user['id']}'>
                     <button class='btn btn-danger'>x</button>
                 </form>
@@ -46,4 +48,5 @@ foreach ($users as $user){
 
 echo "</tbody>
      </table>   ";
+require_once "../../templates/footer.php";
 ?>
