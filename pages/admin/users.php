@@ -37,7 +37,7 @@ foreach ($users as $user){
             <td class='text-center'>
                 <form method='post' action='../../actions/del_user.php'>
                     <input hidden name='id' value='{$user['id']}'>
-                    <button class='btn btn-danger'>x</button>
+                    <button class='btn btn-user-delete btn-danger'>x</button>
                 </form>
             </td>
         </tr>

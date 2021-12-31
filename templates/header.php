@@ -1,5 +1,6 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT']."/config.php";
+$document_root = $_SERVER['DOCUMENT_ROOT'];
+require $document_root . '/config.php';
 ?>
 
 <html lang="en">
@@ -16,9 +17,33 @@ require $_SERVER['DOCUMENT_ROOT']."/config.php";
         <?= $title ?>
     </title>
     <style>
-        .btn-danger {
+        .btn-user-delete {
             border-radius: 100px;
             padding: 2px 12px 4px 12px;
+        }
+        .card-image {
+            margin-top: 10px;
+            height: 180px;
+        }
+        .card-price {
+            text-align: center;
+            font-size: 23px;
+            border-bottom: 2px solid grey;
+        }
+        .card-image img {
+            width: auto;
+            height: 100%;
+        }
+        .btn-product-add, .btn-product-remove {
+            width: 37px;
+        }
+        .card-basket-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-basket-quantity {
+            line-height: 38px;
         }
     </style>
 </head>
@@ -49,6 +74,11 @@ require $_SERVER['DOCUMENT_ROOT']."/config.php";
                     <a class="nav-link <?= $_SERVER['PHP_SELF'] == '/pages/register.php' ? 'active' : '' ?>" href='/pages/register.php'>Регистрация</a>
                     </li>
                     <?php } else { ?>
+                        <li class="nav-item">
+                        <a class="nav-link <?= $_SERVER['PHP_SELF'] == '/pages/basket.php' ? 'active' : '' ?>" href="/pages/basket.php">
+                            Корзина (<?= array_sum($_SESSION['products'] ?? []) ?>)
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?= $_SESSION['user']['login'] ?>
