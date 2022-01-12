@@ -2,16 +2,37 @@
 $title = 'Корзина';
 require_once "../templates/header.php";
 
-$basketProducts = $_SESSION['product'];
-$productsId = array_keys($basketProducts);
+$basketProducts = $_SESSION['products'];
 
-$query = "SELECT * FROM products WHERE id IN (:ids)";
+//echo '$basketProducts == ';
+//var_dump($basketProducts);
+//echo '<br>';
+
+$productsIds = array_keys($basketProducts);
+
+//echo '$productsIds == ';
+//var_dump($productsIds);
+//echo '<br>';
+
+$place_holders = implode(',',array_fill(0,count($productsIds), '?'));
+
+//echo '$place_holders == ';
+//var_dump($place_holders);
+//echo '<br>';
+
+$query = "SELECT * FROM products WHERE id IN ($place_holders)";
 $res = $pdo->prepare($query);
-$res->execute([
-    ':ids' => implode(',', $productIds),
-]);
+$res->execute($productsIds);
+
+//echo '$res == ';
+//var_dump($res);
+//echo '<br>';
+
 $products = $res->fetchAll();
 
+//echo '$products == ';
+//var_dump($products);
+//echo '<br>';
 ?>
 
 <table class="table table-bordered mt-2">
